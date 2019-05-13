@@ -2,6 +2,9 @@
 	<head>
 		<script src="js/mail-generator.js"></script>
 		<link href="css/style.css" rel="stylesheet" media="screen">
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+
+
     <script>
       window.onload = function(){
         // ALL OF YOUR JAVASCRIPT CODE SHOULD GO HERE. 
@@ -10,14 +13,57 @@
 				for (i=0;i<geemails.length;i++){
 					var listElem = document.createElement ('li');
 					listElem.className = "messageBox";
-					var spanElem = document.createElement('span');
+
+					listElem.addEventListener('click',showHide);
+
+					var iElem1 = document.createElement ('i');
+					iElem1.className = "far fa-square";
+					listElem.appendChild (iElem1);
+
+					var iElem2 = document.createElement ('i');
+					iElem2.className = "far fa-star";
+					listElem.appendChild (iElem2);
+
+					var iElem3 = document.createElement ('i');
+					iElem3.className = "far fa-bookmark";
+					listElem.appendChild (iElem3);
+
+
+					var spanElem = 	document.createElement('span');
+					spanElem.className = 'sender';
 					spanElem.innerHTML = geemails[i].sender;
 					listElem.appendChild (spanElem);
-					messagesContainer.appendChild (listElem);
-					
 
+					var spanElem2 = document.createElement ('span');
+					spanElem2.className = 'subject';
+					spanElem2.innerHTML = geemails[i].subject;
+					listElem.appendChild (spanElem2);
+
+					messagesContainer.appendChild (listElem);
+
+					var spanElem3 = document.createElement ('span');
+					spanElem3.className = 'body';
+					spanElem3.innerHTML = geemails[i].body;
+					listElem.appendChild (spanElem3);
+
+					messagesContainer.appendChild (listElem);
+
+					var spanElem4 = document.createElement ('span');
+					spanElem4.className = 'date';
+					spanElem4.innerHTML = geemails[i].date;
+					listElem.appendChild (spanElem4);
+					messagesContainer.appendChild (listElem);
 				}
-				
+
+				function showHide (){
+					if (this.style.height ==='auto'){
+						this.style.height = '50px';
+						this.style.lineHeight = '50px';
+					}else{
+						this.style.height = 'auto';
+						this.style.lineHeight = '50px';
+					}
+				}
       };
     </script>
 	</head>
@@ -36,11 +82,13 @@
 			<div class="content">
 				<ul id = "messagesContainer">
 					<li class="messageBox">
-						<span id="sender">Sender</span>
-						<span id="subject">Subject</span>
-						<span id="msg">Message</span>
-						<span id="date">Date</span>
-					</li>
+						<i class="far fa-square"></i>
+						<i class="fas fa-redo"></i>
+						<i class="fas fa-ellipsis-v"></i>
+						<i class="fas fa-inbox"></i>
+
+				</li>
+
 				</ul>
 			</div>
 		</section>

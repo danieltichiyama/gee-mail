@@ -5,6 +5,7 @@ body {
 #messages{
     display:flex;
     flex-direction: column;
+    width: 75vw;
 }
 
 .messageBox {
@@ -18,23 +19,51 @@ body {
     flex-direction: row;
 }
 
+.messageBox:hover{
+    background: rgba(255,255,255,0.5);
+    box-shadow: transparent;
+}
+
+.far {
+    line-height:inherit!important;   
+    vertical-align:middle;
+    margin-left: 20px;
+}
+
+.fas {
+    line-height:inherit!important;   
+    vertical-align:middle;
+    margin-left: 20px;
+}
+
+.fa-inbox {
+    margin-left:auto;
+    margin-right: 20px;
+}
 .messageBox span {
     vertical-align: middle;
     padding-left: 20px;
-    border: 1px red dotted;
+    /* border: 1px red dotted; */
     margin:none;
+    flex-wrap: nowrap;
+    overflow:hidden;
 }
 
-#sender {
-    width: 10%;
+.sender {
+    width: 15%;
 }
-#subject {
-    width: 10%;
+.subject {
+    width: 25%;
 }
 
-#msg {
-    width:75%;
+.body {
+    width:45%;
+    flex-wrap:wrap;
+    overflow: visible;
+    height: auto
 }
-#date {
-    width:5%;
+
+.date {
+    width:15%;
+    text-align:right;
 }
