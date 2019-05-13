@@ -9,7 +9,7 @@
       window.onload = function(){
         // ALL OF YOUR JAVASCRIPT CODE SHOULD GO HERE. 
         // We have to use window.onload so your JavaScript doesn't execute until the page has loaded and all HTML has been downloaded to your browser
-				console.log (geemails);
+				// console.log (geemails);
 				for (i=0;i<geemails.length;i++){
 					var listElem = document.createElement ('li');
 					listElem.className = "messageBox";
@@ -67,14 +67,27 @@
 
 				var count = messagesContainer.getElementsByClassName('messageBox').length;
 
-				var inbox = document.getElementById('headerBox').querySelector('.fa-inbox');
+				console.log (getNewMessage());
 
-				inbox.innerHTML = " "+count;
+				setInterval (function (){
+					var newLiElem = document.createElement ('li');
+					newLiElem.className = 'messageBox';
+				messagesContainer.appendChild (newLiElem)
+			}, 3000);
 
-
+				var count = messagesContainer.getElementsByClassName('messageBox').length;
 
 				console.log (count);
-      };
+
+				var inbox = document.getElementById('headerBox').querySelector('.fa-inbox');
+
+				inbox.innerHTML = " "+ count;
+
+
+				
+			};
+			
+			console.log (geemails)
     </script>
 	</head>
 	<body>
