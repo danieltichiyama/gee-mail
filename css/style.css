@@ -1,0 +1,40 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#messages{
+    display:flex;
+    flex-direction: column;
+}
+
+.messageBox {
+    background: rgba(0,0,0,0.1);
+    height: 50px;
+    width: inherit;
+    line-height: 50px;
+    list-style: none;
+    border-bottom: 1px rgba(0,0,0,0.2) solid;
+    display:flex;
+    flex-direction: row;
+}
+
+.messageBox span {
+    vertical-align: middle;
+    padding-left: 20px;
+    border: 1px red dotted;
+    margin:none;
+}
+
+#sender {
+    width: 10%;
+}
+#subject {
+    width: 10%;
+}
+
+#msg {
+    width:75%;
+}
+#date {
+    width:5%;
+}

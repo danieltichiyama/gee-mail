@@ -6,13 +6,46 @@
       window.onload = function(){
         // ALL OF YOUR JAVASCRIPT CODE SHOULD GO HERE. 
         // We have to use window.onload so your JavaScript doesn't execute until the page has loaded and all HTML has been downloaded to your browser
-        
+				console.log (geemails);
+				for (i=0;i<geemails.length;i++){
+					var listElem = document.createElement ('li');
+					listElem.className = "messageBox";
+					var spanElem = document.createElement('span');
+					spanElem.innerHTML = geemails[i].sender;
+					listElem.appendChild (spanElem);
+					messagesContainer.appendChild (listElem);
+					
+
+				}
+				
       };
     </script>
 	</head>
 	<body>
-		<div class="container" id="main">
-			Build Me!
-		</div>
+		<section id="header">
+			<div class="content">
+
+			</div>
+		</section>
+		<section id="sidebar">
+			<div class="content">
+
+			</div>
+		</section>
+		<section id="messages">
+			<div class="content">
+				<ul id = "messagesContainer">
+					<li class="messageBox">
+						<span id="sender">Sender</span>
+						<span id="subject">Subject</span>
+						<span id="msg">Message</span>
+						<span id="date">Date</span>
+					</li>
+				</ul>
+			</div>
+		</section>
+		<footer>
+
+		</footer>
 	</body>
 </html>
