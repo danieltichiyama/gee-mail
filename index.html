@@ -64,6 +64,16 @@
 						this.style.lineHeight = '50px';
 					}
 				}
+
+				var count = messagesContainer.getElementsByClassName('messageBox').length;
+
+				var inbox = document.getElementById('headerBox').querySelector('.fa-inbox');
+
+				inbox.innerHTML = " "+count;
+
+
+
+				console.log (count);
       };
     </script>
 	</head>
@@ -81,13 +91,12 @@
 		<section id="messages">
 			<div class="content">
 				<ul id = "messagesContainer">
-					<li class="messageBox">
+					<div id="headerBox">
 						<i class="far fa-square"></i>
 						<i class="fas fa-redo"></i>
 						<i class="fas fa-ellipsis-v"></i>
 						<i class="fas fa-inbox"></i>
-
-				</li>
+					</div>
 
 				</ul>
 			</div>

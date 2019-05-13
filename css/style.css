@@ -8,8 +8,19 @@ body {
     width: 75vw;
 }
 
-.messageBox {
+.messageBox{
     background: rgba(0,0,0,0.1);
+    height: 50px;
+    width: inherit;
+    line-height: 50px;
+    list-style: none;
+    border-bottom: 1px rgba(0,0,0,0.2) solid;
+    display:flex;
+    flex-direction: row;
+}
+
+#headerBox {
+    background: rgba(255,255,255,1);
     height: 50px;
     width: inherit;
     line-height: 50px;
