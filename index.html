@@ -59,35 +59,76 @@
 					if (this.style.height ==='auto'){
 						this.style.height = '50px';
 						this.style.lineHeight = '50px';
+						this.style.backgroundColor = 'rgba(0,0,0,0.1)';
+						// this.stylepaddingTop = 'inherit';
 					}else{
 						this.style.height = 'auto';
-						this.style.lineHeight = '50px';
+						this.style.lineHeight = '20px';
+						this.style.backgroundColor = 'rgba(0,0,0,0.1)';
+						// this.style.paddingTop = '10px';
 					}
 				}
 
-				var count = messagesContainer.getElementsByClassName('messageBox').length;
 
 				console.log (getNewMessage());
 
-				setInterval (function (){
-					var newLiElem = document.createElement ('li');
-					newLiElem.className = 'messageBox';
-				messagesContainer.appendChild (newLiElem)
-			}, 3000);
+				setInterval (addNewMsg, 3000);
 
 				var count = messagesContainer.getElementsByClassName('messageBox').length;
-
-				console.log (count);
 
 				var inbox = document.getElementById('headerBox').querySelector('.fa-inbox');
 
 				inbox.innerHTML = " "+ count;
 
+				function addNewMsg (){
+					// console.log (getNewMessage())
+					var newLiElem = document.createElement ('li');
+					newLiElem.className = 'messageBox';
+					newLiElem.addEventListener('click',showHide);
+					var iElem1 = document.createElement ('i');
+					iElem1.className = "far fa-square";
+					newLiElem.appendChild (iElem1);
 
-				
+					var iElem2 = document.createElement ('i');
+					iElem2.className = "far fa-star";
+					newLiElem.appendChild (iElem2);
+
+					var iElem3 = document.createElement ('i');
+					iElem3.className = "far fa-bookmark";
+					newLiElem.appendChild (iElem3);
+
+					var spanElem = 	document.createElement('span');
+					spanElem.className = 'sender';
+					spanElem.innerHTML = getNewMessage().sender;
+					newLiElem.appendChild (spanElem);
+
+					var spanElem2 = document.createElement ('span');
+					spanElem2.className = 'subject';
+					spanElem2.innerHTML = getNewMessage().subject;
+					newLiElem.appendChild (spanElem2);
+
+					var spanElem3 = document.createElement ('span');
+					spanElem3.className = 'body';
+					spanElem3.innerHTML = getNewMessage().body;
+					newLiElem.appendChild (spanElem3);
+
+					var spanElem4 = document.createElement ('span');
+					spanElem4.className = 'date';
+					spanElem4.innerHTML = getNewMessage().date;
+					newLiElem.appendChild (spanElem4);
+
+					messagesContainer.appendChild (newLiElem);
+
+					var count = messagesContainer.getElementsByClassName('messageBox').length;
+
+					console.log(count);
+
+					var inbox = document.getElementById('headerBox').querySelector('.fa-inbox');
+
+				inbox.innerHTML = " "+ count;
+				}
 			};
 			
-			console.log (geemails)
     </script>
 	</head>
 	<body>

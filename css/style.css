@@ -9,7 +9,7 @@ body {
 }
 
 .messageBox{
-    background: rgba(0,0,0,0.1);
+    background: rgba(255,255,255,1);
     height: 50px;
     width: inherit;
     line-height: 50px;
@@ -71,7 +71,7 @@ body {
     width:45%;
     flex-wrap:wrap;
     overflow: visible;
-    height: auto
+    height: auto;
 }
 
 .date {
