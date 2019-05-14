@@ -9,7 +9,7 @@
       window.onload = function(){
         // ALL OF YOUR JAVASCRIPT CODE SHOULD GO HERE. 
         // We have to use window.onload so your JavaScript doesn't execute until the page has loaded and all HTML has been downloaded to your browser
-				// console.log (geemails);
+				console.log (geemails);
 				for (i=0;i<geemails.length;i++){
 					var listElem = document.createElement ('li');
 					listElem.className = "messageBox";
@@ -59,20 +59,22 @@
 					if (this.style.height ==='auto'){
 						this.style.height = '50px';
 						this.style.lineHeight = '50px';
-						this.style.backgroundColor = 'rgba(0,0,0,0.1)';
-						// this.stylepaddingTop = 'inherit';
+						this.style.paddingTop = '0';
+						this.style.paddingBottom = '0';
 					}else{
 						this.style.height = 'auto';
 						this.style.lineHeight = '20px';
+						this.style.paddingTop = '15px';	
 						this.style.backgroundColor = 'rgba(0,0,0,0.1)';
-						// this.style.paddingTop = '10px';
+						this.style.paddingBottom = '15px';
 					}
 				}
 
+				// I want to figure out a way to make it so that the items in the flexbox retain their vertical position relative to the top when the body of the message is expanded.
 
 				console.log (getNewMessage());
 
-				setInterval (addNewMsg, 3000);
+				setInterval (addNewMsg, 20000);
 
 				var count = messagesContainer.getElementsByClassName('messageBox').length;
 
@@ -127,6 +129,8 @@
 
 				inbox.innerHTML = " "+ count;
 				}
+
+				// I think there is a more efficient way to write my code so that I don't have to create a spanElem1...2...3 and so on.  Need some time to wrap my head around it.
 			};
 			
     </script>
@@ -134,7 +138,9 @@
 	<body>
 		<section id="header">
 			<div class="content">
-
+					<i class="fas fa-bars fa-lg"></i>
+					<i class="far fa-envelope fa-lg">  Gmail</i>
+					<input type="text" id="search" name="search" placeholder="Search mail">
 			</div>
 		</section>
 		<section id="sidebar">
