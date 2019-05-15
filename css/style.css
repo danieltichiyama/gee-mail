@@ -20,6 +20,7 @@ body {
     display:flex;
     flex-direction: row;
     position:relative;
+    cursor: pointer;
 }
 
 #headerBox {
@@ -76,11 +77,20 @@ body {
     flex-wrap:wrap;
     overflow: visible;
     height: auto;
+    color:gray;
 }
 
 .date {
     width:15%;
     text-align:right;
+}
+
+i {
+    color: gray;
+    cursor: pointer;
+}
+i:hover {
+    color:black;
 }
 
 input {
@@ -106,6 +116,7 @@ input {
     margin-top:25px;
     width: 200px;
     margin-right: 0;
+    cursor: pointer;
 }
 
 #sidebar nav {

@@ -20,13 +20,19 @@
 					iElem1.className = "far fa-square";
 					listElem.appendChild (iElem1);
 
+					iElem1.addEventListener ('click',changeSquare);
+
 					var iElem2 = document.createElement ('i');
 					iElem2.className = "far fa-star";
 					listElem.appendChild (iElem2);
 
+					iElem2.addEventListener('click',changeStar);
+
 					var iElem3 = document.createElement ('i');
 					iElem3.className = "far fa-bookmark";
 					listElem.appendChild (iElem3);
+
+					iElem3.addEventListener('click',changeBookmark);
 
 
 					var spanElem = 	document.createElement('span');
@@ -52,6 +58,7 @@
 					spanElem4.className = 'date';
 					spanElem4.innerHTML = geemails[i].date;
 					listElem.appendChild (spanElem4);
+
 					messagesContainer.appendChild (listElem);
 				}
 
@@ -61,12 +68,18 @@
 						this.style.lineHeight = '50px';
 						this.style.paddingTop = '0';
 						this.style.paddingBottom = '0';
+						this.querySelector('.body').style.color='gray';
+						this.style.cursor = '';
 					}else{
 						this.style.height = 'auto';
 						this.style.lineHeight = '20px';
 						this.style.paddingTop = '15px';	
 						this.style.backgroundColor = 'rgba(150,150,150,0.1)';
 						this.style.paddingBottom = '15px';
+						this.querySelector('.body').style.color = 'black';
+						this.style.cursor = 'auto';
+
+						// console.log ('else');
 					}
 				}
 
@@ -89,18 +102,27 @@
 					iElem1.className = "far fa-square";
 					newLiElem.appendChild (iElem1);
 
+					iElem1.addEventListener ('click',changeSquare);
+
+
 					var iElem2 = document.createElement ('i');
 					iElem2.className = "far fa-star";
 					newLiElem.appendChild (iElem2);
+
+					iElem2.addEventListener ('click', changeStar)
+
 
 					var iElem3 = document.createElement ('i');
 					iElem3.className = "far fa-bookmark";
 					newLiElem.appendChild (iElem3);
 
+					iElem3.addEventListener('click',changeBookmark);
+
 					var spanElem = 	document.createElement('span');
 					spanElem.className = 'sender';
 					spanElem.innerHTML = getNewMessage().sender;
 					newLiElem.appendChild (spanElem);
+
 
 					var spanElem2 = document.createElement ('span');
 					spanElem2.className = 'subject';
@@ -128,8 +150,37 @@
 				inbox.innerHTML = " "+ count;
 				}
 
-				
+			
 
+				function changeSquare (){
+					if (this.className === 'far fa-square'){
+					this.className ='far fa-check-square';
+					this.style.color = 'blue';
+					}else{
+						this.className = 'far fa-square';
+						this.style.color = '';
+					}
+				}
+
+				function changeStar (){
+					if (this.className === 'far fa-star'){
+					this.className ='fas fa-star';
+					this.style.color = 'gold';
+					}else{
+						this.className = 'far fa-star';
+						this.style.color = '';
+					}
+				}
+
+				function changeBookmark(){
+					if (this.className === 'far fa-bookmark'){
+					this.className ='fas fa-bookmark';
+					this.style.color = 'green';
+					}else{
+						this.className = 'far fa-bookmark';
+						this.style.color = '';
+					}
+				}
 				// I think there is a more efficient way to write my code so that I don't have to create a spanElem1...2...3 and so on.  Need some time to wrap my head around it.
 			};
 			
@@ -139,8 +190,8 @@
 		<section id="header">
 			<div class="content">
 					<i class="fas fa-bars fa-lg"></i>
-					<i class="far fa-envelope fa-lg" >  
-						<p style = "font-family: Arial, Helvetica, sans-serif; display: inline;">Gmail</p></i>
+					<i class="far fa-envelope fa-lg" style = 'color:royalblue' >  
+						<p style = "font-family: Arial, Helvetica, sans-serif; display: inline; color:royalblue	;">Gee-mail</p></i>
 					<input type="text" id="search" name="search" placeholder="Search mail">
 			</div>
 		</section>
