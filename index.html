@@ -65,12 +65,10 @@
 						this.style.height = 'auto';
 						this.style.lineHeight = '20px';
 						this.style.paddingTop = '15px';	
-						this.style.backgroundColor = 'rgba(0,0,0,0.1)';
+						this.style.backgroundColor = 'rgba(150,150,150,0.1)';
 						this.style.paddingBottom = '15px';
 					}
 				}
-
-				// I want to figure out a way to make it so that the items in the flexbox retain their vertical position relative to the top when the body of the message is expanded.
 
 				console.log (getNewMessage());
 
@@ -130,6 +128,8 @@
 				inbox.innerHTML = " "+ count;
 				}
 
+				
+
 				// I think there is a more efficient way to write my code so that I don't have to create a spanElem1...2...3 and so on.  Need some time to wrap my head around it.
 			};
 			
@@ -139,16 +139,23 @@
 		<section id="header">
 			<div class="content">
 					<i class="fas fa-bars fa-lg"></i>
-					<i class="far fa-envelope fa-lg">  Gmail</i>
+					<i class="far fa-envelope fa-lg" >  
+						<p style = "font-family: Arial, Helvetica, sans-serif; display: inline;">Gmail</p></i>
 					<input type="text" id="search" name="search" placeholder="Search mail">
 			</div>
 		</section>
 		<section id="sidebar">
 			<div class="content">
-
+				<nav>
+					<li class="navBar" style = "margin-bottom: 20px;">Compose</li>
+					<li class="navBar">Inbox</li>
+					<li class="navBar">Starred</li>
+					<li class="navBar">All Mail</li>
+					<li class="navBar">Trash</li>
+				</nav>
 			</div>
 		</section>
-		<section id="messages">
+		<section id="messages" style = 'display:inline-block;'>
 			<div class="content">
 				<ul id = "messagesContainer">
 					<div id="headerBox">
