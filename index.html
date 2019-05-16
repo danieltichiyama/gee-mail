@@ -83,8 +83,6 @@
 					}
 				}
 
-				console.log (getNewMessage());
-
 				setInterval (addNewMsg, 20000);
 
 				var count = messagesContainer.getElementsByClassName('messageBox').length;
@@ -93,8 +91,15 @@
 
 				inbox.innerHTML = " "+ count;
 
+
+				var newMail = getNewMessage();
+				console.log(newMail);
+				
 				function addNewMsg (){
 					// console.log (getNewMessage())
+					var newMail = getNewMessage();
+					// console.log(newMail);
+
 					var newLiElem = document.createElement ('li');
 					newLiElem.className = 'messageBox';
 					newLiElem.addEventListener('click',showHide);
@@ -104,13 +109,11 @@
 
 					iElem1.addEventListener ('click',changeSquare);
 
-
 					var iElem2 = document.createElement ('i');
 					iElem2.className = "far fa-star";
 					newLiElem.appendChild (iElem2);
 
 					iElem2.addEventListener ('click', changeStar)
-
 
 					var iElem3 = document.createElement ('i');
 					iElem3.className = "far fa-bookmark";
@@ -120,23 +123,23 @@
 
 					var spanElem = 	document.createElement('span');
 					spanElem.className = 'sender';
-					spanElem.innerHTML = getNewMessage().sender;
+					spanElem.innerHTML = newMail.sender;
 					newLiElem.appendChild (spanElem);
 
 
 					var spanElem2 = document.createElement ('span');
 					spanElem2.className = 'subject';
-					spanElem2.innerHTML = getNewMessage().subject;
+					spanElem2.innerHTML = newMail.subject;
 					newLiElem.appendChild (spanElem2);
 
 					var spanElem3 = document.createElement ('span');
 					spanElem3.className = 'body';
-					spanElem3.innerHTML = getNewMessage().body;
+					spanElem3.innerHTML = newMail.body;
 					newLiElem.appendChild (spanElem3);
 
 					var spanElem4 = document.createElement ('span');
 					spanElem4.className = 'date';
-					spanElem4.innerHTML = getNewMessage().date;
+					spanElem4.innerHTML = newMail.date;
 					newLiElem.appendChild (spanElem4);
 
 					messagesContainer.appendChild (newLiElem);
