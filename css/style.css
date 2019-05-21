@@ -21,6 +21,7 @@ body {
     flex-direction: row;
     position:relative;
     cursor: pointer;
+    padding-right:10px;
 }
 
 #headerBox {

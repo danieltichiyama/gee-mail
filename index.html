@@ -26,11 +26,11 @@
 
 				function makeButtons (parent){
 					var buttonsArr = ['far fa-square','far fa-star','far fa-bookmark'];
-					// var buttonFunctions = [changeSquare(),changeStar(),changeBookmark()];
+					var buttonFunctions = [changeSquare,changeStar,changeBookmark];
 					for (a=0; a<buttonsArr.length; a++){
 					var icon = document.createElement ('i');
 					icon.className = buttonsArr[a];
-					// icon.addEventListener('click',buttonFunctions[i]);
+					icon.addEventListener('click',buttonFunctions[a]);
 					parent.appendChild (icon);
 					};
 				}
@@ -69,12 +69,17 @@
 					}
 				}
 
+				function countEmails(){
 				var count = messagesContainer.getElementsByClassName('messageBox').length;
 				var inbox = document.getElementById('headerBox').querySelector('.fa-inbox');
 				inbox.innerHTML = " "+ count;
+				console.log(count);
+			}
+
+			countEmails ();
 				// inbox message count
 
-				setInterval (addNewMsg, 20000);
+				setInterval (addNewMsg, 10000);
 
 				function addNewMsg (){
 					var newMail = getNewMessage();
@@ -92,67 +97,9 @@
 					listElem.addEventListener('click',showHide);
 					
 					messagesContainer.appendChild (listElem);
+
+					countEmails ()
 					}
-				
-				// function addNewMsg (){
-				// 	// console.log (getNewMessage())
-				// 	var newMail = getNewMessage();
-				// 	// console.log(newMail);
-
-				// 	var newLiElem = document.createElement ('li');
-				// 	newLiElem.className = 'messageBox';
-				// 	newLiElem.addEventListener('click',showHide);
-				// 	var iElem1 = document.createElement ('i');
-				// 	iElem1.className = "far fa-square";
-				// 	newLiElem.appendChild (iElem1);
-
-				// 	iElem1.addEventListener ('click',changeSquare);
-
-				// 	var iElem2 = document.createElement ('i');
-				// 	iElem2.className = "far fa-star";
-				// 	newLiElem.appendChild (iElem2);
-
-				// 	iElem2.addEventListener ('click', changeStar)
-
-				// 	var iElem3 = document.createElement ('i');
-				// 	iElem3.className = "far fa-bookmark";
-				// 	newLiElem.appendChild (iElem3);
-
-				// 	iElem3.addEventListener('click',changeBookmark);
-
-				// 	var spanElem = 	document.createElement('span');
-				// 	spanElem.className = 'sender';
-				// 	spanElem.innerHTML = newMail.sender;
-				// 	newLiElem.appendChild (spanElem);
-
-
-				// 	var spanElem2 = document.createElement ('span');
-				// 	spanElem2.className = 'subject';
-				// 	spanElem2.innerHTML = newMail.subject;
-				// 	newLiElem.appendChild (spanElem2);
-
-				// 	var spanElem3 = document.createElement ('span');
-				// 	spanElem3.className = 'body';
-				// 	spanElem3.innerHTML = newMail.body;
-				// 	newLiElem.appendChild (spanElem3);
-
-				// 	var spanElem4 = document.createElement ('span');
-				// 	spanElem4.className = 'date';
-				// 	spanElem4.innerHTML = newMail.date;
-				// 	newLiElem.appendChild (spanElem4);
-
-				// 	messagesContainer.appendChild (newLiElem);
-
-				// 	var count = messagesContainer.getElementsByClassName('messageBox').length;
-
-				// 	console.log(count);
-
-				// 	var inbox = document.getElementById('headerBox').querySelector('.fa-inbox');
-
-				// inbox.innerHTML = " "+ count;
-				// }
-
-			
 
 				function changeSquare (){
 					if (this.className === 'far fa-square'){
@@ -162,6 +109,7 @@
 						this.className = 'far fa-square';
 						this.style.color = '';
 					}
+					event.stopPropagation();
 				}
 
 				function changeStar (){
@@ -172,6 +120,8 @@
 						this.className = 'far fa-star';
 						this.style.color = '';
 					}
+					event.stopPropagation();
+
 				}
 
 				function changeBookmark(){
@@ -182,6 +132,7 @@
 						this.className = 'far fa-bookmark';
 						this.style.color = '';
 					}
+					event.stopPropagation();
 				}
 
 			};
