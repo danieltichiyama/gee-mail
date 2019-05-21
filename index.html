@@ -9,66 +9,54 @@
       window.onload = function(){
         // ALL OF YOUR JAVASCRIPT CODE SHOULD GO HERE. 
         // We have to use window.onload so your JavaScript doesn't execute until the page has loaded and all HTML has been downloaded to your browser
-				console.log (geemails);
-				for (i=0;i<geemails.length;i++){
+				// console.log (geemails);
+
+				function makeLiElem (obj){
+					// console.log ('makeLiElem');
 					var listElem = document.createElement ('li');
-					listElem.className = "messageBox";
-
+					listElem.className = 'messageBox';
+					makeButtons(listElem);
+					fillContent(geemails,listElem);
+	
 					listElem.addEventListener('click',showHide);
-
-					var iElem1 = document.createElement ('i');
-					iElem1.className = "far fa-square";
-					listElem.appendChild (iElem1);
-
-					iElem1.addEventListener ('click',changeSquare);
-
-					var iElem2 = document.createElement ('i');
-					iElem2.className = "far fa-star";
-					listElem.appendChild (iElem2);
-
-					iElem2.addEventListener('click',changeStar);
-
-					var iElem3 = document.createElement ('i');
-					iElem3.className = "far fa-bookmark";
-					listElem.appendChild (iElem3);
-
-					iElem3.addEventListener('click',changeBookmark);
-
-
-					var spanElem = 	document.createElement('span');
-					spanElem.className = 'sender';
-					spanElem.innerHTML = geemails[i].sender;
-					listElem.appendChild (spanElem);
-
-					var spanElem2 = document.createElement ('span');
-					spanElem2.className = 'subject';
-					spanElem2.innerHTML = geemails[i].subject;
-					listElem.appendChild (spanElem2);
-
+					
 					messagesContainer.appendChild (listElem);
+					}
 
-					var spanElem3 = document.createElement ('span');
-					spanElem3.className = 'body';
-					spanElem3.innerHTML = geemails[i].body;
-					listElem.appendChild (spanElem3);
 
-					messagesContainer.appendChild (listElem);
-
-					var spanElem4 = document.createElement ('span');
-					spanElem4.className = 'date';
-					spanElem4.innerHTML = geemails[i].date;
-					listElem.appendChild (spanElem4);
-
-					messagesContainer.appendChild (listElem);
+				function makeButtons (parent){
+					var buttonsArr = ['far fa-square','far fa-star','far fa-bookmark'];
+					// var buttonFunctions = [changeSquare(),changeStar(),changeBookmark()];
+					for (a=0; a<buttonsArr.length; a++){
+					var icon = document.createElement ('i');
+					icon.className = buttonsArr[a];
+					// icon.addEventListener('click',buttonFunctions[i]);
+					parent.appendChild (icon);
+					};
 				}
+
+				function fillContent (arr,parent){
+					// console.log('fillContent');
+					var keys = ['sender','subject','body','date'];
+					for (b=0; b<keys.length;b++){
+						var spanElem = document.createElement ('span');
+						spanElem.className = keys[b];
+						spanElem.innerHTML = arr[i][keys[b]];
+						parent.appendChild (spanElem);
+					}
+				}
+				
+				for (i=0;i<geemails.length;i++){
+						makeLiElem();
+					};
 
 				function showHide (){
 					if (this.style.height ==='auto'){
-						this.style.height = '50px';
-						this.style.lineHeight = '50px';
-						this.style.paddingTop = '0';
-						this.style.paddingBottom = '0';
-						this.querySelector('.body').style.color='gray';
+						this.style.height = '';
+						this.style.lineHeight = '';
+						this.style.paddingTop = '';
+						this.style.paddingBottom = '';
+						this.querySelector('.body').style.color='';
 						this.style.cursor = '';
 					}else{
 						this.style.height = 'auto';
@@ -78,80 +66,91 @@
 						this.style.paddingBottom = '15px';
 						this.querySelector('.body').style.color = 'black';
 						this.style.cursor = 'auto';
-
-						// console.log ('else');
 					}
 				}
 
+				var count = messagesContainer.getElementsByClassName('messageBox').length;
+				var inbox = document.getElementById('headerBox').querySelector('.fa-inbox');
+				inbox.innerHTML = " "+ count;
+				// inbox message count
+
 				setInterval (addNewMsg, 20000);
 
-				var count = messagesContainer.getElementsByClassName('messageBox').length;
-
-				var inbox = document.getElementById('headerBox').querySelector('.fa-inbox');
-
-				inbox.innerHTML = " "+ count;
-
-
-				var newMail = getNewMessage();
-				console.log(newMail);
-				
 				function addNewMsg (){
-					// console.log (getNewMessage())
 					var newMail = getNewMessage();
-					// console.log(newMail);
+					var listElem = document.createElement ('li');
+					listElem.className = 'messageBox';
+					makeButtons(listElem);
+					var keys = ['sender','subject','body','date'];
+					for (c=0;c<keys.length;c++){
+						var spanElem = document.createElement ('span');
+						spanElem.className = keys[c];
+						spanElem.innerHTML = newMail[keys[c]];
+						listElem.appendChild (spanElem);
+					}
+	
+					listElem.addEventListener('click',showHide);
+					
+					messagesContainer.appendChild (listElem);
+					}
+				
+				// function addNewMsg (){
+				// 	// console.log (getNewMessage())
+				// 	var newMail = getNewMessage();
+				// 	// console.log(newMail);
 
-					var newLiElem = document.createElement ('li');
-					newLiElem.className = 'messageBox';
-					newLiElem.addEventListener('click',showHide);
-					var iElem1 = document.createElement ('i');
-					iElem1.className = "far fa-square";
-					newLiElem.appendChild (iElem1);
+				// 	var newLiElem = document.createElement ('li');
+				// 	newLiElem.className = 'messageBox';
+				// 	newLiElem.addEventListener('click',showHide);
+				// 	var iElem1 = document.createElement ('i');
+				// 	iElem1.className = "far fa-square";
+				// 	newLiElem.appendChild (iElem1);
 
-					iElem1.addEventListener ('click',changeSquare);
+				// 	iElem1.addEventListener ('click',changeSquare);
 
-					var iElem2 = document.createElement ('i');
-					iElem2.className = "far fa-star";
-					newLiElem.appendChild (iElem2);
+				// 	var iElem2 = document.createElement ('i');
+				// 	iElem2.className = "far fa-star";
+				// 	newLiElem.appendChild (iElem2);
 
-					iElem2.addEventListener ('click', changeStar)
+				// 	iElem2.addEventListener ('click', changeStar)
 
-					var iElem3 = document.createElement ('i');
-					iElem3.className = "far fa-bookmark";
-					newLiElem.appendChild (iElem3);
+				// 	var iElem3 = document.createElement ('i');
+				// 	iElem3.className = "far fa-bookmark";
+				// 	newLiElem.appendChild (iElem3);
 
-					iElem3.addEventListener('click',changeBookmark);
+				// 	iElem3.addEventListener('click',changeBookmark);
 
-					var spanElem = 	document.createElement('span');
-					spanElem.className = 'sender';
-					spanElem.innerHTML = newMail.sender;
-					newLiElem.appendChild (spanElem);
+				// 	var spanElem = 	document.createElement('span');
+				// 	spanElem.className = 'sender';
+				// 	spanElem.innerHTML = newMail.sender;
+				// 	newLiElem.appendChild (spanElem);
 
 
-					var spanElem2 = document.createElement ('span');
-					spanElem2.className = 'subject';
-					spanElem2.innerHTML = newMail.subject;
-					newLiElem.appendChild (spanElem2);
+				// 	var spanElem2 = document.createElement ('span');
+				// 	spanElem2.className = 'subject';
+				// 	spanElem2.innerHTML = newMail.subject;
+				// 	newLiElem.appendChild (spanElem2);
 
-					var spanElem3 = document.createElement ('span');
-					spanElem3.className = 'body';
-					spanElem3.innerHTML = newMail.body;
-					newLiElem.appendChild (spanElem3);
+				// 	var spanElem3 = document.createElement ('span');
+				// 	spanElem3.className = 'body';
+				// 	spanElem3.innerHTML = newMail.body;
+				// 	newLiElem.appendChild (spanElem3);
 
-					var spanElem4 = document.createElement ('span');
-					spanElem4.className = 'date';
-					spanElem4.innerHTML = newMail.date;
-					newLiElem.appendChild (spanElem4);
+				// 	var spanElem4 = document.createElement ('span');
+				// 	spanElem4.className = 'date';
+				// 	spanElem4.innerHTML = newMail.date;
+				// 	newLiElem.appendChild (spanElem4);
 
-					messagesContainer.appendChild (newLiElem);
+				// 	messagesContainer.appendChild (newLiElem);
 
-					var count = messagesContainer.getElementsByClassName('messageBox').length;
+				// 	var count = messagesContainer.getElementsByClassName('messageBox').length;
 
-					console.log(count);
+				// 	console.log(count);
 
-					var inbox = document.getElementById('headerBox').querySelector('.fa-inbox');
+				// 	var inbox = document.getElementById('headerBox').querySelector('.fa-inbox');
 
-				inbox.innerHTML = " "+ count;
-				}
+				// inbox.innerHTML = " "+ count;
+				// }
 
 			
 
@@ -184,7 +183,7 @@
 						this.style.color = '';
 					}
 				}
-				// I think there is a more efficient way to write my code so that I don't have to create a spanElem1...2...3 and so on.  Need some time to wrap my head around it.
+
 			};
 			
     </script>
